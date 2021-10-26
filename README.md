@@ -2,6 +2,22 @@
 
 ## Devices
 
+### WiFi access point / router
+Xiaomi Mi Router 3G v1
+- [AliExpress](https://www.aliexpress.com/item/32837907107.html) (no longer available)
+- [OpenWRT](https://openwrt.org/toh/xiaomi/mir3g)
+- v2 is a completely different device with a lot worse hardware!
+- Wi-Fi 5 (802.11ac)
+- Flashable over serial
+- WPA3 and 802.11w Management Frame Protection are not compatible with some old Android devices
+
+ASUS RT-AX58U
+- [Hinta.fi](https://hinta.fi/1780666/asus-rt-ax58u)
+- [Geizhals](https://geizhals.eu/asus-rt-ax58u-ax3000-90ig04q0-mo3r10-a2152041.html)
+- [Asuswrt-Merlin](https://www.asuswrt-merlin.net/)
+  - Not as customizable as OpenWRT, but good enough firmware for most purposes
+- Wi-Fi 6 (802.11ax)
+
 ### Bluetooth adapter
 Zexmte
 - [Amazon](https://www.amazon.de/-/en/Bluetooth-anti-interference-transmission-headphones-compatible/dp/B08SC9M9K3/)
