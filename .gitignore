@@ -2,7 +2,7 @@
 *.db-*
 *.log
 *.log.*
+.idea
 home_assistant/config/.storage
 home_assistant/config/custom_components
 secrets.yaml
-
