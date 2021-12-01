@@ -11,4 +11,17 @@ automation: !include automations.yaml
 script: !include scripts.yaml
 scene: !include scenes.yaml
 
+nordpool:
+
 prometheus:
+
+sensor:
+  - platform: nordpool
+    VAT: True
+    currency: "EUR"
+    low_price_cutoff: 0.5
+    region: "FI"
+    precision: 3
+    price_type: kWh
+    # (transfer fee + tax)/(VAT * cents_to_eur)
+    additional_costs: "{{(4.07+2.79372)/(1.24*100)|float}}"
