@@ -2,6 +2,24 @@
 
 ## Devices
 
+### Control panel
+Egobas Smart Monitor 15.6"
+- [AliExpress](https://www.aliexpress.com/item/1005001380819089.html)
+- With Android, touchscreen and Bluetooth remote
+- SoC: MediaTek MT5862
+- CPU: 4x [ARM Cortex A53](https://en.wikipedia.org/wiki/ARM_Cortex-A53)
+- RAM: 1 GB
+- Flash: 8 GB
+- As of 2021-12 the device comes with
+  - Android 9.0 (version eng.jinwen.20211209.155520)
+  - Android security patch 2021-01-05
+  - Kernel 4.9.118+
+- Recovery can be entered by holding down the menu button when booting
+  - Holding down any of the buttons will make the selected entry green
+  - However, the menu cannot be navigated with the buttons, nor can the entries be selected. There appears to be some kind of a trick.
+- The USB port seems to work only in OTG mode, not client mode
+  - Therefore ADB seems not to be supported.
+
 ### WiFi access point / router
 Xiaomi Mi Router 3G v1
 - [AliExpress](https://www.aliexpress.com/item/32837907107.html) (no longer available)
