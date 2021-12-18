@@ -103,7 +103,7 @@ ProfiCook PC-WKS 1167G 1.5L
 - [Amazon](https://www.amazon.de/gp/product/B07PQPZ8HH/)
 - [Tasmota](https://templates.blakadder.com/proficook_PC-WKS_1167.html)
   - Flashable over serial
-  - Requires custom configuration, but instructions are available on the template page
+  - Requires custom configuration, but instructions are available on the template page.
 
 ### Surge protection
 APC Surge Protector PME1WU2B-GR
@@ -129,4 +129,4 @@ Xiaomi
 Tuya YG400A
 - [AliExpress](https://www.aliexpress.com/item/4000818367545.html)
 - [Tasmota](https://templates.blakadder.com/YG400A.html)
-- Now comes with a slightly different motherboard than in the Tasmota instructions
+- New version comes with a different chip (CB3S instead of TYWE3S) that is not compatible with Tasmota.
