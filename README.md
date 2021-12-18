@@ -15,8 +15,7 @@ Egobas Smart Monitor 15.6"
   - Android security patch 2021-01-05
   - Kernel 4.9.118+
 - Recovery can be entered by holding down the menu button when booting
-  - Holding down any of the buttons will make the selected entry green
-  - However, the menu cannot be navigated with the buttons, nor can the entries be selected. There appears to be some kind of a trick.
+  - However, the menu cannot be navigated with the buttons, nor can the entries be selected.
 - The USB port seems to work only in OTG mode, not client mode
   - Therefore ADB seems not to be supported.
 
