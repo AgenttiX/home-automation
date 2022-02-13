@@ -1,6 +1,16 @@
 # Home automation
 Work in progress
 
+## Software
+- [Home Assistant](https://www.home-assistant.io/)
+  - The central open-source hub for home automation
+  - Configuration is provided in the [home_assistant](./home_assistant) folder.
+  - Can be run in a Docker container, but to use Bluetooth-connected devices the server must have a Bluetooth adapter.
+  - Can be controlled with an [Android app](https://play.google.com/store/apps/details?id=io.homeassistant.companion.android).
+- [Tasmota](https://tasmota.github.io/docs/)
+  - An open-source firmware for various IoT devices
+  - When buying IoT devices, prefer ones that [have support for Tasmota](https://templates.blakadder.com/) or some other custom firmware. This ensures that you won't be dependent on the software updates by the manufacturer.
+
 ## Devices
 
 ### Control panel
@@ -130,3 +140,11 @@ Tuya YG400A
 - [AliExpress](https://www.aliexpress.com/item/4000818367545.html)
 - [Tasmota](https://templates.blakadder.com/YG400A.html)
 - New version comes with a different chip (CB3S instead of TYWE3S) that is not compatible with Tasmota.
+
+### Thermometer
+Withings Thermo
+- Controlled with the Withings Thermo Android app
+
+### Scale
+Withings ASDFASDF
+- Controlled with the Withings Health Mate Android app
