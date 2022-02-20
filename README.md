@@ -15,6 +15,7 @@ Work in progress
 
 ### Control panel
 Egobas Smart Monitor 15.6"
+- Do not buy this without considering the drawbacks below!
 - [AliExpress](https://www.aliexpress.com/item/1005001380819089.html)
 - With Android, touchscreen and Bluetooth remote
 - SoC: MediaTek MT5862
@@ -25,10 +26,37 @@ Egobas Smart Monitor 15.6"
   - Android 9.0 (version eng.jinwen.20211209.155520)
   - Android security patch 2021-01-05
   - Kernel 4.9.118+
-- Recovery can be entered by holding down the menu button when booting
-  - However, the menu cannot be navigated with the buttons, nor can the entries be selected.
-- The USB port seems to work only in OTG mode, not client mode
-  - Therefore ADB seems not to be supported.
+- The recovery is unusable
+  - It can be entered by holding down the menu button when booting.
+    However, the menu cannot be navigated with the buttons, nor can the entries be selected.
+- The USB port works only in OTG mode, not client mode
+  - Therefore ADB is not supported
+- These limitations are intentional by the manufacturer
+  - According to the customer support: "It is closed by default and will not be opened specifically"
+  - This means, that if the user interface of the device crashes for some reason, there is no way to reset the device,
+    and you have to throw it away.
+  - However, they may be willing to make exceptions for big corporate clients but not for individual customers
+- Sometimes the touchscreen stops working, and the menu dot from the top-left corner disappears.
+  This can be fixed by factory resetting the device using the remote or an external USB mouse,
+  but this wipes all the data on the device.
+- There is no way to lock the screen with a PIN code or password, or to encrypt the device
+  - This is horrible for information security, and therefore no sensitive information should be stored on the device
+- The display has good colors but there's some ghosting
+  - The backlight may make an audible high-pitched hum for brightness levels between 20 - 90 %.
+  - Excess pressure will make the affected region of the display permanently brighter,
+    resulting in uneven image brightness. Use an additional cover when carrying the monitor in a backpack!
+- There are several issues with Netflix
+  - The device is not certified by Netflix, and therefore Netflix for Android TV does not work.
+    This gives the error "Sorry, your account can't be used on this device."
+    [`tvq-pb-101 (1.10.5005)`](https://help.netflix.com/en/node/110819)
+  - The device theoretically has support for Widevine L1 DRM, but Netflix sees only Widevine L3,
+    limiting the resolution to 480p.
+- The device is not suitable for children
+  - The main menu of the device showcases trending videos recommended by some weird algorithm,
+    and this includes NSFW videos.
+    There is no way to disable this except by switching to an alternative launcher such as
+    [Nova Launcher](https://play.google.com/store/apps/details?id=com.teslacoilsw.launcher).
+
 
 ### WiFi access point / router
 Xiaomi Mi Router 3G v1
