@@ -11,6 +11,15 @@ automation: !include automations.yaml
 script: !include scripts.yaml
 scene: !include scenes.yaml
 
+mqtt:
+  broker: home_assistant_mqtt
+  port: 1883
+  client_id: home_assistant
+  username: home_assistant
+  password: !secret mqtt_password
+  # https://www.home-assistant.io/docs/mqtt/certificate/
+  # certificate:
+
 nordpool:
 
 prometheus:

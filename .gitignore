@@ -5,4 +5,5 @@
 .idea
 home_assistant/config/.storage
 home_assistant/config/custom_components
+passwd
 secrets.yaml

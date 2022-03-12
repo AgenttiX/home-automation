@@ -5,7 +5,27 @@ services:
     image: "ghcr.io/home-assistant/home-assistant:stable"
     volumes:
       - ./config:/config
+      # - ./ssl:/ssl
       - /etc/localtime:/etc/localtime:ro
     restart: unless-stopped
+    # ports:
+    #   - "8123:8123"
+    # TODO: pass Bluetooth adapter with this
+    # device:
+    #   - /dev/ASDF
+    # TODO: disable these
     privileged: true
     network_mode: host
+  mqtt:
+    container_name: home_assistant_mqtt
+    image: eclipse-mosquitto:latest
+    # The auth folder must be writable so that the mosquitto_passwd utility can be used
+    volumes:
+      - ./mosquitto/auth:/mosquitto/auth
+      - ./mosquitto/config:/mosquitto/config:ro
+      - ./mosquitto/data:/mosquitto/data
+      - ./mosquitto/log:/mosquitto/log
+    restart: unless-stopped
+    ports:
+      - "1883:1883"
+      - "8883:8883"
