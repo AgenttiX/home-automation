@@ -24,6 +24,12 @@ nordpool:
 
 prometheus:
 
+ble_monitor:
+  bt_interface:
+    - !secret bluetooth_mac
+  bt_auto_restart: True
+  discovery: True
+
 sensor:
   - platform: nordpool
     VAT: True
