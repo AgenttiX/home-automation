@@ -82,7 +82,10 @@ Zexmte
   - Bluetooth >= 4.0 is required for Bluetooth LE (BLE)
 - Class 1 radio (100 m range)
 - Realtek RTL8761B
+  - Requires Linux kernel >= 5.8, which can be installed on Ubuntu 20.04 with
+    `sudo apt-get install linux-generic-hwe-20.04`
   - [Requires additional firmware for Linux](https://linuxreviews.org/Realtek_RTL8761B)
+    - On Ubuntu the firmware and config should be copied to `/lib/firmware/rtl_bt` with the file extension `.bin`.
 
 ### Lighting
 Philips Hue
@@ -162,6 +165,7 @@ Xiaomi
 - [AliExpress](https://www.aliexpress.com/item/4000406818501.html)
 - [Custom firmware](https://github.com/pvvx/ATC_MiThermometer)
   - [Flashing may only work when done with a phone instead of a computer!](https://github.com/pvvx/ATC_MiThermometer/issues/67#issuecomment-942660040)
+  - Connecting to the sensor may also require a browser based on Google Chrome.
 
 ### Smoke alarm
 Tuya YG400A
