@@ -31,6 +31,9 @@ ble_monitor:
   discovery: True
 
 sensor:
+  - platform: ethermineinfo
+    miner_address: !secret miner_address
+    currency_name: EUR
   - platform: nordpool
     VAT: True
     currency: "EUR"
