@@ -202,3 +202,13 @@ Withings Thermo
 ### Scale
 Withings ASDFASDF
 - Controlled with the Withings Health Mate Android app
+
+### Toothbrush
+Oral-B
+- I might test these in the future
+- [At least partially supported](https://custom-components.github.io/ble_monitor/)
+  by the [Passive BLE Monitor integration](https://github.com/custom-components/ble_monitor) for Home Assistant
+
+Philips Sonicare
+- The [Philips Sonicare app](https://play.google.com/store/apps/details?id=com.philips.cdp.ohc.tuscany)
+  refuses to start on rooted phones. Therefore stay away from their products!
