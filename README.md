@@ -36,11 +36,11 @@ Egobas Smart Monitor 15.6"
   - This means, that if the user interface of the device crashes for some reason, there is no way to reset the device,
     and you have to throw it away.
   - However, they may be willing to make exceptions for big corporate clients but not for individual customers
-- Sometimes the touchscreen stops working, and the menu dot from the top-left corner disappears.
+- Sometimes the touchscreen stops working, and the menu dot from the top-left corner disappears
   This can be fixed by factory resetting the device using the remote or an external USB mouse,
   but this wipes all the data on the device.
-- There is no way to lock the screen with a PIN code or password, or to encrypt the device
-  - This is horrible for information security, and therefore no sensitive information should be stored on the device
+- There is no way to lock the screen with a PIN code or password, or to encrypt the device.
+  - This is horrible for security, and therefore no sensitive information should be stored on the device.
 - The display has good colors but there's some ghosting
   - The backlight may make an audible high-pitched hum for brightness levels between 20 - 90 %.
   - Excess pressure will make the affected region of the display permanently brighter,
@@ -71,6 +71,7 @@ ASUS RT-AX58U
 - [Hinta.fi](https://hinta.fi/1780666/asus-rt-ax58u)
 - [Geizhals](https://geizhals.eu/asus-rt-ax58u-ax3000-90ig04q0-mo3r10-a2152041.html)
 - [Asuswrt-Merlin](https://www.asuswrt-merlin.net/)
+- I don't have one, but have received positive feedback from friends and relatives who have these.
   - Not as customizable as OpenWRT, but good enough firmware for most purposes
 - Wi-Fi 6 (802.11ax)
 
@@ -161,11 +162,32 @@ Hama Surge Protection Adaptor
 - Small, does not obstruct adjacent sockets
 
 ### Temperature and humidity sensor
-Xiaomi
+Xiaomi LYWSD03MMC
 - [AliExpress](https://www.aliexpress.com/item/4000406818501.html)
 - [Custom firmware](https://github.com/pvvx/ATC_MiThermometer)
   - [Flashing may only work when done with a phone instead of a computer!](https://github.com/pvvx/ATC_MiThermometer/issues/67#issuecomment-942660040)
   - Connecting to the sensor may also require a browser based on Google Chrome.
+- [Supported](https://custom-components.github.io/ble_monitor/by_brand#xiaomi)
+  by the [Passive BLE Monitor integration](https://github.com/custom-components/ble_monitor) for Home Assistant
+
+Xiaomi MHO-C303
+- [AliExpress](https://www.aliexpress.com/item/4001227289167.html)
+- With clock and timer
+- Not compatible with the custom firmware. Therefore I recommend buying one of the supported models instead.
+- Adjusting the settings with a phone requires that the
+  [Xiaomi Home](https://play.google.com/store/apps/details?id=com.xiaomi.smarthome)
+  app is set to the mainland China region, which is a privacy concern.
+- [Supported](https://custom-components.github.io/ble_monitor/by_brand#xiaomi)
+  by the [Passive BLE Monitor integration](https://github.com/custom-components/ble_monitor) for Home Assistant
+
+### Plant sensor
+MiFlora HHCCJCY01
+- [AliExpress](https://www.aliexpress.com/item/33017406335.html)
+- Monitors temperature, moisture, conductivity and illuminance
+- The default [Flower Care](https://play.google.com/store/apps/details?id=com.huahuacaocao.flowercare)
+  app has severe login issues
+- [Supported](https://custom-components.github.io/ble_monitor/by_brand#miflora)
+  by the [Passive BLE Monitor integration](https://github.com/custom-components/ble_monitor) for Home Assistant
 
 ### Smoke alarm
 Tuya YG400A
