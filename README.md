@@ -10,6 +10,9 @@ Work in progress
 - [Tasmota](https://tasmota.github.io/docs/)
   - An open-source firmware for various IoT devices
   - When buying IoT devices, prefer ones that [have support for Tasmota](https://templates.blakadder.com/) or some other custom firmware. This ensures that you won't be dependent on the software updates by the manufacturer.
+  - Prefer devices with [ESP32](https://en.wikipedia.org/wiki/ESP32) over other chips,
+    including the second-best option [ESP8266](https://en.wikipedia.org/wiki/ESP8266),
+    as ESP32 has pre-built TLS support in Tasmota. This improves security significantly.
 
 ## Devices
 
