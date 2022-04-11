@@ -11,6 +11,12 @@ automation: !include automations.yaml
 script: !include scripts.yaml
 scene: !include scenes.yaml
 
+ble_monitor:
+  bt_interface:
+    - !secret bluetooth_mac
+  bt_auto_restart: True
+  discovery: True
+
 mqtt:
   broker: home_assistant_mqtt
   port: 1883
@@ -24,13 +30,10 @@ nordpool:
 
 prometheus:
 
-ble_monitor:
-  bt_interface:
-    - !secret bluetooth_mac
-  bt_auto_restart: True
-  discovery: True
-
 sensor:
+  - platform: ethermineinfo
+    miner_address: !secret miner_address
+    currency_name: EUR
   - platform: nordpool
     VAT: True
     currency: "EUR"
