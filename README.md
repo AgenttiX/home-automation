@@ -115,8 +115,10 @@ Nous A1
 
 Gosund SP112
 - Amazon (no longer available)
-- [Tasmota](https://templates.blakadder.com/gosund_SP112.html)
-  - [Newer version](https://templates.blakadder.com/gosund_SP112_v3_4.html) comes with a Wifi module that is not compatible with Tasmota!
+- Tasmota
+  - [Old version](https://templates.blakadder.com/gosund_SP112.html)
+  - [New version](https://templates.blakadder.com/gosund_SP112_v3_4.html)
+  - Now comes with a Wifi module that is not compatible with Tasmota!
 - 2 USB ports with a separate relay (but no physical button)
 - 16 A / 3680 W
 
