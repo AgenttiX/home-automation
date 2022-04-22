@@ -11,6 +11,31 @@ automation: !include automations.yaml
 script: !include scripts.yaml
 scene: !include scenes.yaml
 
+# https://github.com/basnijholt/adaptive-lighting
+adaptive_lighting:
+  - name: "default"
+    lights:
+      - light.dining_table_1
+      - light.dining_table_2
+      - light.hallway_1
+      - light.hallway_2
+      - light.hallway_3
+      - light.hallway_4
+      - light.hallway_5
+      - light.kitchen_1
+      - light.kitchen_2
+      - light.living_room_1
+      - light.living_room_2
+      - light.living_room_3
+      - light.ps_lamp
+      - light.table_lamp_1
+      - light.table_lamp_2
+    min_brightness: 80
+    max_brightness: 100
+    sunrise_time: "06:00:00"
+    sunset_time: "22:00:00"
+
+# https://github.com/custom-components/ble_monitor
 ble_monitor:
   bt_interface:
     - !secret bluetooth_mac
