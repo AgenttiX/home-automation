@@ -24,13 +24,21 @@ services:
       # - ./ssl:/ssl
       - /etc/localtime:/etc/localtime:ro
     restart: unless-stopped
+    # If there is no need for Bluetooth, this should be used instead of "network_mode: host"
     # ports:
     #   - "8123:8123"
-    # TODO: pass Bluetooth adapter with this
+    # This can be used to pass the raw bluetooth adapter.
+    # Passing only the HCI from the host seems not to work.
+    # However, passing the entire Bluetooth adapter would require disabling Bluetooth services
+    # from the host and running them inside the container.
+    # https://stackoverflow.com/questions/28868393/accessing-bluetooth-dongle-from-inside-docker
     # device:
     #   - /dev/ASDF
-    # TODO: disable these
+    # This gives the container access to the Bluetooth device etc.
+    # https://community.home-assistant.io/t/avoid-network-mode-host-for-docker/47250
     privileged: true
+    # This gives the container access to the host network for discovery etc.
+    # TODO: test whether this can be disabled without breaking Bluetooth
     network_mode: host
   mqtt:
     container_name: home_assistant_mqtt
