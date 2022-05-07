@@ -1,5 +1,21 @@
 version: "3"
 services:
+  duckdns:
+    # There is also a DuckDNS integration for Home Assistant, but running it in a separate container is more secure.
+    # https://www.home-assistant.io/integrations/duckdns/
+    image: lscr.io/linuxserver/duckdns:latest
+    container_name: home_assistant_duckdns
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Europe/Helsinki
+      - LOG_FILE=true
+    env_file:
+      # The SUBDOMAINS and TOKEN variables should be defined in this file
+      - ./duckdns/duckdns.env
+    restart: unless-stopped
+    volumes:
+      - ./duckdns/config:/config
   home_assistant:
     container_name: home_assistant
     image: "ghcr.io/home-assistant/home-assistant:stable"
