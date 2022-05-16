@@ -29,6 +29,20 @@ Egobas Smart Monitor 15.6"
   - Android 9.0 (version eng.jinwen.20211209.155520)
   - Android security patch 2021-01-05
   - Kernel 4.9.118+
+- As of 2022-05-16 the device can be manually updated to
+  - Android 9.0 (version eng.jingwen.20220418.080715)
+  - The security patch level and kernel stay the same
+  - The update adds the Google Play Store to the main menu
+  - SHA256 checksum for the update file: `e6684517a2f3256ee9b34e736a441b455c0c4217de3b39ebf8e7643fbe37333b`
+- How to update the firmware manually
+  - Note that this may factory reset the device! (Or at least it did so for me without warning.)
+  - Get the firmware file from the manufacturer (~ 1.5 GB) by e.g. asking in the AliExpress chat
+  - Place the file to the root of a USB flash drive with the filename `MTK368P.bin`
+  - Turn off the device and disconnect the power cable
+  - Connect the USB drive to the Micro-USB port of the device
+  - Hold the power button and connect the power cable
+  - The device should boot to the firmware update screen
+  - Release the power button and wait for the update to complete
 - The recovery is unusable
   - It can be entered by holding down the menu button when booting.
     However, the menu cannot be navigated with the buttons, nor can the entries be selected.
