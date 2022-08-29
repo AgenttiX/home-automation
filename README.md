@@ -118,13 +118,28 @@ Philips Hue
   - [Geizhals](https://geizhals.eu/philips-hue-white-and-colour-ambiance-led-bulb-e14-6-5w-929002294202-a2448894.html)
 
 ### Socket
+Only buy sockets with 16 A current rating and energy monitoring!
+
+Athom 16A EU V2
+- [AliExpress](https://www.aliexpress.com/item/4001230982267.html)
+- [Tasmota](https://templates.blakadder.com/athom_PG01V2-EU16A-TAS.html) preinstalled
+- Energy monitoring is provided by the integrated
+  [HLW8032](https://www.electrodragon.com/product/energy-meter-hlw8032-breakout-board/)
+  power monitoring chip. No calibration is necessary.
+- 16 A / 3680 W
+
+Nous A1T
+- Same hardware as Nous A1 used to have,
+  but with [Tasmota](https://templates.blakadder.com/nous_A1T.html) preinstalled
+- [Amazon](https://www.amazon.de/-/en/gp/product/B0054PSIPA/)
+- Energy monitoring
+- 16 A / 3450 W
+
 Nous A1
 - [Amazon](https://www.amazon.de/gp/product/B0054PSES6/)
-- [Tasmota](https://templates.blakadder.com/nous_A1.html)
-  - Flashable with Tuya-Convert
-  - Only buy sockets with support for custom firmware!
+- No longer compatible with [Tasmota](https://templates.blakadder.com/nous_A1.html)
+  - Used to be flashable with Tuya-Convert
 - Energy monitoring
-  - Only buy sockets with energy monitoring!
 - 16 A / 3450 W
 
 Gosund SP112
@@ -132,7 +147,7 @@ Gosund SP112
 - Tasmota
   - [Old version](https://templates.blakadder.com/gosund_SP112.html)
   - [New version](https://templates.blakadder.com/gosund_SP112_v3_4.html)
-  - Now comes with a Wifi module that is not compatible with Tasmota!
+  - Now comes with a Wi-Fi module that is not compatible with Tasmota.
 - 2 USB ports with a separate relay (but no physical button)
 - 16 A / 3680 W
 
@@ -141,19 +156,24 @@ Gosund SP211
 - [AliExpress](https://www.aliexpress.com/item/1005002198374650.html)
 - [Tasmota](https://templates.blakadder.com/gosund_SP211.html)
   - At least previously flashable with Tuya-Convert
-  - Flashable over serial, can be opened with screws
+  - Used to be flashable over serial, can be opened with screws.
+  - Now probably comes with a Wi-Fi module that is not compatible with Tasmota.
 - Energy monitoring (total only, not per socket)
 - 15 A
 
 ### Power strip
+Nous A5T
+- [Amazon](https://www.amazon.de/-/en/gp/product/B0054PSH9C/)
+- [Tasmota](https://templates.blakadder.com/nous_A5T.html) preinstalled
+- Same hardware as Gosund P1
+
 Gosund P1
 - Amazon (no longer available)
 - [Tasmota](https://templates.blakadder.com/gosund_P1.html)
-  - Now requires flashing over serial
-  - Only buy power strips with support for custom firmware!
+  - Required flashing over serial
+  - Now probably comes with a Wi-Fi module that is not compatible with Tasmota.
 - Buttons are quirky with default settings, and pressing one button may affect another socket.
 - Energy monitoring (total only, not per socket)
-  - Only buy sockets with energy monitoring!
 
 Power strip box
 - With "wooden" cover: [AliExpress](https://www.aliexpress.com/item/4001237800573.html)
@@ -223,10 +243,12 @@ Withings ASDFASDF
 - Controlled with the Withings Health Mate Android app
 
 ### Toothbrush
-Oral-B
-- I might test these in the future
+Oral-B Genius X
+- [Amazon](https://www.amazon.de/-/en/gp/product/B094HNRZT4/)
 - [At least partially supported](https://custom-components.github.io/ble_monitor/)
-  by the [Passive BLE Monitor integration](https://github.com/custom-components/ble_monitor) for Home Assistant
+  by the
+  [Passive BLE Monitor integration](https://github.com/custom-components/ble_monitor)
+  for Home Assistant
 
 Philips Sonicare
 - The [Philips Sonicare app](https://play.google.com/store/apps/details?id=com.philips.cdp.ohc.tuscany)
