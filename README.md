@@ -128,6 +128,15 @@ Athom 16A EU V2
   power monitoring chip. No calibration is necessary.
 - 16 A / 3680 W
 
+CozyLife 16A
+- [AliExpress](https://www.aliexpress.com/item/1005004541903825.html)
+- [Tasmota](https://templates.blakadder.com/cozylife_homekit_plug.html)
+- Looks promising, but I haven't tested these yet
+- Energy monitoring
+- Based on ESP32-SOLO1
+- Requires flashing over serial
+- 16 A / 3750 W
+
 Nous A1T
 - Same hardware as Nous A1 used to have,
   but with [Tasmota](https://templates.blakadder.com/nous_A1T.html) preinstalled
