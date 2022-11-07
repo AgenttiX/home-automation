@@ -42,14 +42,15 @@ ble_monitor:
   bt_auto_restart: True
   discovery: True
 
-mqtt:
-  broker: home_assistant_mqtt
-  port: 1883
-  client_id: home_assistant
-  username: home_assistant
-  password: !secret mqtt_password
-  # https://www.home-assistant.io/docs/mqtt/certificate/
-  # certificate:
+# MQTT no longer supports file-based configuration
+# mqtt:
+#   broker: home_assistant_mqtt
+#   port: 1883
+#   client_id: home_assistant
+#   username: home_assistant
+#   password: !secret mqtt_password
+#   # https://www.home-assistant.io/docs/mqtt/certificate/
+#   # certificate:
 
 nordpool:
 
