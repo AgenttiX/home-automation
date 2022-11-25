@@ -8,11 +8,18 @@ Work in progress
   - Can be run in a Docker container, but to use Bluetooth-connected devices the server must have a Bluetooth adapter.
   - Can be controlled with an [Android app](https://play.google.com/store/apps/details?id=io.homeassistant.companion.android).
 - [Tasmota](https://tasmota.github.io/docs/)
-  - An open-source firmware for various IoT devices
+  - Open-source firmware for ESP8266- and ESP32-based IoT devices
   - When buying IoT devices, prefer ones that [have support for Tasmota](https://templates.blakadder.com/) or some other custom firmware. This ensures that you won't be dependent on the software updates by the manufacturer.
   - Prefer devices with [ESP32](https://en.wikipedia.org/wiki/ESP32) over other chips,
     including the second-best option [ESP8266](https://en.wikipedia.org/wiki/ESP8266),
     as ESP32 has pre-built TLS support in Tasmota. This improves security significantly.
+- [Tuya-Convert](https://github.com/ct-Open-Source/tuya-convert)
+  - OTA jailbreak for ESP8266-based devices with old stock firmware
+- [OpenBeken](https://github.com/openshwprojects/OpenBK7231T_App)
+  - Tasmota-like firmware for devices based on Tuya modules
+  - Not as feature-rich as Tasmota, but rapidly improving.
+- [Tuya Cloudcutter](https://github.com/tuya-cloudcutter/tuya-cloudcutter)
+  - OTA jailbreak for Tuya-based devices
 
 ## Devices
 
@@ -225,6 +232,9 @@ Tuya YG400A
 - [AliExpress](https://www.aliexpress.com/item/4000818367545.html)
 - [Tasmota](https://templates.blakadder.com/YG400A.html)
 - New version comes with a different chip (CB3S instead of TYWE3S) that is not compatible with Tasmota.
+- The [CB3S](https://developer.tuya.com/en/docs/iot/cb3s?id=Kai94mec0s076)
+  is based on BK7231N and should therefore be compatible with OpenBeken.
+  However, as of 2022, there is no configuration template.
 
 ### Thermometer
 Withings Thermo
