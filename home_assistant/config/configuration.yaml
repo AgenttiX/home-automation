@@ -74,3 +74,46 @@ sensor:
     price_type: kWh
     # (transfer fee + tax)/(VAT * cents_to_eur)
     additional_costs: "{{(4.07+2.79372)/(1.24*100)|float}}"
+
+template:
+#  - trigger:
+#      - platform: time_pattern
+#        minutes: "/5"
+  - sensor:
+      - name: "Total Daily Energy"
+        device_class: "energy"
+        unit_of_measurement: "kWh"
+        # https://community.home-assistant.io/t/how-to-automatically-include-and-sum-the-values-of-multiple-utility-meter-sensors/165814/4
+        state: >
+          {% set ns = namespace(states=[]) %}
+          {% for s in states.sensor %}
+            {% if s.object_id.startswith('tasmota_energy_today') and s.state != "unavailable" %}
+              {% set ns.states = ns.states + [ s.state | float ] %}
+            {% endif %}
+          {% endfor %}
+          {{ ns.states | sum | round(2) }}
+      - name: "Total Power"
+        device_class: "energy"
+        unit_of_measurement: "W"
+        state: >
+          {% set ns = namespace(states=[]) %}
+          {% for s in states.sensor %}
+            {% if s.object_id.startswith('tasmota_energy_power') and s.state != "unavailable" %}
+              {% set ns.states = ns.states + [ s.state | float ] %}
+            {% endif %}
+          {% endfor %}
+          {{ ns.states | sum | round(2) }}
+      - name: "Average Voltage"
+        device_class: "voltage"
+        unit_of_measurement: "V"
+        state: >
+          {% set ns = namespace(states=[]) %}
+          {% for s in states.sensor %}
+            {% if s.object_id.startswith('tasmota_energy_voltage') and s.state != "unavailable" %}
+              {% set state = (s.state | float) %}
+              {% if state != 0 %}
+                {% set ns.states = ns.states + [ state ] %}
+              {% endif %}
+            {% endif %}
+          {% endfor %}
+          {{ ns.states | average | round(2) }}
