@@ -1,0 +1,129 @@
+blueprint:
+  name: 'Tasmota Discovery: ProfiCook PC-WKS 1167 G Kettle'
+  source_url: https://github.com/tasmota/blueprints/blob/main/discovery_proficook-kettle.yaml
+  description: "Set up a ProfiCook PC-WKS 1167 G Tuya Water Kettle running Tasmota
+    in Home Assistant. See device template page for additional information: [ProfiCook
+    PC-WKS 1167 G](https://templates.blakadder.com/blitzhome_BH-AP1.html).\n\n**Requires
+    rules configured in Tasmota!** \n\n<details>\n\n    template {\"NAME\":\"ProfiCook
+    PC-WKS 1167 G\",\"GPIO\":[0,2272,0,2304,0,0,0,0,0,0,0,0,0,0],\"FLAG\":0,\"BASE\":54,\"CMND\":\"TuyaMCU
+    99,1 | TuyaMCU 71,105 | TuyaMCU 72,102 | TempRes 0 | Module 0\"}\n     \n    rule3
+    \n    on tuyareceived#dptype4id101 do publish %topic%/mode %value% endon\n    on
+    tuyareceived#dptype2id102 do publish %topic%/tempset %value% endon\n    on tuyareceived#dptype5id104
+    do publish %topic%/error %value% endon\n    on tuyareceived#dptype4id106 do publish
+    %topic%/status %value% endon\n    on tuyareceived#dptype2id107 do publish %topic%/timer
+    %value% endon\n    on tuyareceived#dptype4id106==2 do backlog delay 3; publish
+    %topic%/timer 0 endon\n</details>\n\nBlog post explaining this blueprint on [blakadder.com](https://blakadder.com/proficook-kettle-in-home-assistant/).\n\n<small>Built
+    for Home Assistant 2022.8+</small>\n"
+  domain: automation
+  input:
+    tasmota_device:
+      name: Tasmota Device
+      description: Select the Tasmota device
+      selector:
+        device:
+          integration: tasmota
+          manufacturer: Tasmota
+          multiple: false
+    topic:
+      name: Tasmota MQTT Topic
+      description: 'Found in the web UI "Information" menu under "MQTT Topic" or with
+        `Topic` command
+
+        '
+      selector:
+        text: {}
+mode: single
+max_exceeded: silent
+variables:
+  device_id: !input tasmota_device
+  topic: !input topic
+  connections: '{{ device_attr(device_id, ''connections'') }}'
+  name: '{{ device_attr(device_id, ''name'') if device_attr(device_id, ''name_by_user'')
+    == None else device_attr(device_id, ''name_by_user'') }}'
+  macaddr: "{%- for i in device_attr(device_id, 'connections') -%}\n  {{ i[1].replace(\":\",
+    \"\") }}\n{% endfor %}"
+  payload_mode: "{{ \n  '{\n    \"name\":\"' ~ name ~ ' Mode\",\n    \"state_topic\":\"'
+    ~ topic ~ '/mode\",\n    \"icon\":\"hass:kettle-steam\",\n    \"options\":[\"Standby\",\"Custom
+    °C\",\"Quick Boil\",\"100°C\",\"85°C\",\"60°C\",\"45°C\"],\n    \"value_template\":\"{%-
+    set val = { \\'0\\':\\'45°C\\', \\'1\\':\\'60°C\\', \\'2\\':\\'85°C\\', \\'3\\':\\'100°C\\',
+    \\'4\\':\\'Quick Boil\\', \\'5\\':\\'Custom °C\\', \\'6\\':\\'Standby\\' } -%}{{
+    val[value] | default(\\'\\', true) }}\",\n    \"command_topic\":\"cmnd/' ~ topic
+    ~ '/backlog0\",\n    \"command_template\":\"{%- set val = { \\'45°C\\':\\'0\\',
+    \\'60°C\\':\\'1\\', \\'85°C\\':\\'2\\', \\'100°C\\':\\'3\\', \\'Quick Boil\\':\\'4\\',
+    \\'Custom °C\\':\\'5\\', \\'Standby\\':\\'6\\' } -%}{%- if states(expand(device_entities(device_id))|
+    selectattr(\\'entity_id\\', \\'search\\', \\'_kettlestatus\\') | map(attribute=\\'entity_id\\')
+    | list | join(\\',\\')) != \\'Standby\\' -%}tuyasend4 101,6; {% endif %}tuyasend4
+    101,{{ val[value] }}\",\n    \"avty_t\":\"tele/' ~ topic ~ '/LWT\",\n    \"pl_avail\":\"Online\",\n
+    \   \"pl_not_avail\":\"Offline\",\n    \"uniq_id\":\"' ~ macaddr ~ 'mode\",\n
+    \   \"dev\":{\"cns\":[[\"mac\",\"' ~ macaddr ~ '\"]]}\n  }'\n}} "
+  payload_status: "{{ \n  '{\n    \"name\":\"' ~ name ~ ' Status\",\n    \"icon\":\"hass:kettle\",\n
+    \   \"state_topic\":\"' ~ topic ~ '/status\",\n    \"value_template\":\"{%- set
+    val = { \\'1\\':\\'Removed from base\\', \\'2\\':\\'Standby\\', \\'3\\':\\'Heating\\',
+    \\'4\\':\\'Cooling down\\', \\'5\\':\\'Maintain temperature\\' } -%}{{ val[value]
+    | default(\\'Standby\\', true) }}\",\n    \"avty_t\":\"tele/' ~ topic ~ '/LWT\",\n
+    \   \"pl_avail\":\"Online\",\n    \"pl_not_avail\":\"Offline\",\n    \"object_id\":\"'
+    ~ name | slugify ~ '_kettlestatus\",\n    \"uniq_id\":\"' ~ macaddr ~ '_status\",\n
+    \   \"dev\":{\"cns\":[[\"mac\",\"' ~ macaddr ~ '\"]]}\n  }' \n}}"
+  payload_error: "{{ \n  '{\n    \"name\":\"' ~ name ~ ' Error\",\n    \"icon\":\"hass:kettle-alert\",\n
+    \   \"entity_category\":\"diagnostic\",\n    \"state_topic\":\"' ~ topic ~ '/error\",\n
+    \   \"value_template\":\"{%- set val = { \\'0X00\\':\\'No Error\\', \\'0X01\\':\\'Kettle
+    empty\\', \\'0X04\\':\\'Kettle overheated\\'} -%}{{ val[value] | default(\\'\\',
+    true) }}\",\n    \"avty_t\":\"tele/' ~ topic ~ '/LWT\",\n    \"pl_avail\":\"Online\",\n
+    \   \"pl_not_avail\":\"Offline\",\n    \"uniq_id\":\"' ~ macaddr ~ '_error\",\n
+    \   \"dev\":{\"cns\":[[\"mac\",\"' ~ macaddr ~ '\"]]}\n  }' \n}}"
+  payload_tempset: "{{ \n  '{\n    \"name\":\"' ~ name ~ ' Target Temperature\",\n
+    \   \"icon\":\"hass:temperature-celsius\",\n    \"device_class\":\"temperature\",\n
+    \   \"unit_of_measurement\":\"°C\",\n    \"min\":35,\n    \"max\":100,\n    \"state_topic\":\"'
+    ~ topic ~ '/tempset\",\n    \"command_topic\":\"cmnd/' ~ topic ~ '/tuyasend2\",\n
+    \   \"command_template\":\"102,{{ value }}\",\n    \"mode\":\"box\",\n    \"avty_t\":\"tele/'
+    ~ topic ~ '/LWT\",\n    \"pl_avail\":\"Online\",\n    \"pl_not_avail\":\"Offline\",\n
+    \   \"uniq_id\":\"' ~ macaddr ~ '_tempset\",\n    \"dev\":{\"cns\":[[\"mac\",\"'
+    ~ macaddr ~ '\"]]}\n  }' \n}}"
+  payload_timer: "{{ \n  '{\n    \"name\":\"' ~ name ~ ' Time Remaining\",\n    \"icon\":\"hass:timer-sand\",\n
+    \   \"device_class\":\"duration\",\n    \"unit_of_measurement\":\"min\",\n    \"state_topic\":\"'
+    ~ topic ~ '/timer\",\n    \"avty_t\":\"tele/' ~ topic ~ '/LWT\",\n    \"pl_avail\":\"Online\",\n
+    \   \"pl_not_avail\":\"Offline\",\n    \"uniq_id\":\"' ~ macaddr ~ '_timer\",\n
+    \   \"dev\":{\"cns\":[[\"mac\",\"' ~ macaddr ~ '\"]]}\n  }' \n}}"
+trigger_variables:
+  topic: !input topic
+trigger:
+- platform: homeassistant
+  event: start
+- platform: mqtt
+  topic: '{{ "tele/" ~ topic ~ "/LWT" }}'
+  payload: Online
+action:
+- service: mqtt.publish
+  data:
+    topic: homeassistant/select/{{ macaddr }}/mode/config
+    retain: true
+    payload: '{{ payload_mode }}'
+- service: mqtt.publish
+  data:
+    topic: homeassistant/sensor/{{ macaddr }}/kettlestatus/config
+    retain: true
+    payload: '{{ payload_status }}'
+- service: mqtt.publish
+  data:
+    topic: homeassistant/sensor/{{ macaddr }}/error/config
+    retain: true
+    payload: '{{ payload_error }}'
+- service: mqtt.publish
+  data:
+    topic: homeassistant/number/{{ macaddr }}/tempset/config
+    retain: true
+    payload: '{{ payload_tempset }}'
+- service: mqtt.publish
+  data:
+    topic: homeassistant/sensor/{{ macaddr }}/timer/config
+    retain: true
+    payload: '{{ payload_timer }}'
+- delay:
+    hours: 0
+    minutes: 0
+    seconds: 5
+    milliseconds: 0
+- service: mqtt.publish
+  data:
+    topic: cmnd/{{ topic }}/tuyasend8
+    payload: ''

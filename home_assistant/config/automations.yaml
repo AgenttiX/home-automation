@@ -1,1 +1,8 @@
-[]
+- id: '1663625931053'
+  alias: 'Tasmota Discovery: ProfiCook PC-WKS 1167 G Kettle'
+  description: ''
+  use_blueprint:
+    path: tasmota/discovery_proficook-kettle.yaml
+    input:
+      tasmota_device: b48211371680355362913c510caf24cf
+      topic: tasmota_D06ADD
