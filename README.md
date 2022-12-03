@@ -8,11 +8,18 @@ Work in progress
   - Can be run in a Docker container, but to use Bluetooth-connected devices the server must have a Bluetooth adapter.
   - Can be controlled with an [Android app](https://play.google.com/store/apps/details?id=io.homeassistant.companion.android).
 - [Tasmota](https://tasmota.github.io/docs/)
-  - An open-source firmware for various IoT devices
+  - Open-source firmware for ESP8266- and ESP32-based IoT devices
   - When buying IoT devices, prefer ones that [have support for Tasmota](https://templates.blakadder.com/) or some other custom firmware. This ensures that you won't be dependent on the software updates by the manufacturer.
   - Prefer devices with [ESP32](https://en.wikipedia.org/wiki/ESP32) over other chips,
     including the second-best option [ESP8266](https://en.wikipedia.org/wiki/ESP8266),
     as ESP32 has pre-built TLS support in Tasmota. This improves security significantly.
+- [Tuya-Convert](https://github.com/ct-Open-Source/tuya-convert)
+  - OTA jailbreak for ESP8266-based devices with old stock firmware
+- [OpenBeken](https://github.com/openshwprojects/OpenBK7231T_App)
+  - Tasmota-like firmware for devices based on Tuya modules
+  - Not as feature-rich as Tasmota, but rapidly improving.
+- [Tuya Cloudcutter](https://github.com/tuya-cloudcutter/tuya-cloudcutter)
+  - OTA jailbreak for Tuya-based devices
 
 ## Devices
 
@@ -75,23 +82,6 @@ Egobas Smart Monitor 15.6"
     [Nova Launcher](https://play.google.com/store/apps/details?id=com.teslacoilsw.launcher).
 
 
-### WiFi access point / router
-Xiaomi Mi Router 3G v1
-- [AliExpress](https://www.aliexpress.com/item/32837907107.html) (no longer available)
-- [OpenWRT](https://openwrt.org/toh/xiaomi/mir3g)
-- v2 is a completely different device with a lot worse hardware!
-- Wi-Fi 5 (802.11ac)
-- Flashable over serial
-- WPA3 and 802.11w Management Frame Protection are not compatible with some old Android devices
-
-ASUS RT-AX58U
-- [Hinta.fi](https://hinta.fi/1780666/asus-rt-ax58u)
-- [Geizhals](https://geizhals.eu/asus-rt-ax58u-ax3000-90ig04q0-mo3r10-a2152041.html)
-- [Asuswrt-Merlin](https://www.asuswrt-merlin.net/)
-- I don't have one, but have received positive feedback from friends and relatives who have these.
-  - Not as customizable as OpenWRT, but good enough firmware for most purposes
-- Wi-Fi 6 (802.11ax)
-
 ### Bluetooth adapter
 Zexmte
 - [Amazon](https://www.amazon.de/-/en/Bluetooth-anti-interference-transmission-headphones-compatible/dp/B08SC9M9K3/)
@@ -127,6 +117,15 @@ Athom 16A EU V2
   [HLW8032](https://www.electrodragon.com/product/energy-meter-hlw8032-breakout-board/)
   power monitoring chip. No calibration is necessary.
 - 16 A / 3680 W
+
+CozyLife 16A
+- [AliExpress](https://www.aliexpress.com/item/1005004541903825.html)
+- [Tasmota](https://templates.blakadder.com/cozylife_homekit_plug.html)
+- Looks promising, but I haven't tested these yet
+- Energy monitoring
+- Based on ESP32-SOLO1
+- Requires flashing over serial
+- 16 A / 3750 W
 
 Nous A1T
 - Same hardware as Nous A1 used to have,
@@ -233,6 +232,9 @@ Tuya YG400A
 - [AliExpress](https://www.aliexpress.com/item/4000818367545.html)
 - [Tasmota](https://templates.blakadder.com/YG400A.html)
 - New version comes with a different chip (CB3S instead of TYWE3S) that is not compatible with Tasmota.
+- The [CB3S](https://developer.tuya.com/en/docs/iot/cb3s?id=Kai94mec0s076)
+  is based on BK7231N and should therefore be compatible with OpenBeken.
+  However, as of 2022, there is no configuration template.
 
 ### Thermometer
 Withings Thermo
