@@ -7,6 +7,7 @@
 home_assistant/config/.storage
 home_assistant/config/www
 home_assistant/config/custom_components
+home_assistant/ddclient
 home_assistant/duckdns/duckdns.env
 passwd
 secrets.yaml

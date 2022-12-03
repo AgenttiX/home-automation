@@ -1,5 +1,15 @@
 version: "3"
 services:
+  ddclient:
+    image: lscr.io/linuxserver/ddclient:latest
+    container_name: ddclient
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Europe/Helsinki
+    volumes:
+      - ./ddclient:/config
+    restart: always
   duckdns:
     # There is also a DuckDNS integration for Home Assistant, but running it in a separate container is more secure.
     # https://www.home-assistant.io/integrations/duckdns/
