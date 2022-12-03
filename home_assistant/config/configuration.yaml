@@ -34,6 +34,8 @@ adaptive_lighting:
     max_brightness: 100
     sunrise_time: "06:00:00"
     sunset_time: "22:00:00"
+    take_over_control: true
+    detect_non_ha_changes: true
 
 # https://github.com/custom-components/ble_monitor
 ble_monitor:
