@@ -10,6 +10,8 @@ services:
     volumes:
       - ./ddclient:/config
     restart: always
+    labels:
+      - "com.centurylinklabs.watchtower.scope=home-assistant"
   duckdns:
     # There is also a DuckDNS integration for Home Assistant, but running it in a separate container is more secure.
     # https://www.home-assistant.io/integrations/duckdns/
@@ -23,9 +25,11 @@ services:
     env_file:
       # The SUBDOMAINS and TOKEN variables should be defined in this file
       - ./duckdns/duckdns.env
-    restart: unless-stopped
     volumes:
       - ./duckdns/config:/config
+    restart: always
+    labels:
+      - "com.centurylinklabs.watchtower.scope=home-assistant"
   home_assistant:
     container_name: home_assistant
     image: "ghcr.io/home-assistant/home-assistant:stable"
@@ -33,7 +37,7 @@ services:
       - ./config:/config
       # - ./ssl:/ssl
       - /etc/localtime:/etc/localtime:ro
-    restart: unless-stopped
+    restart: always
     # If there is no need for Bluetooth, this should be used instead of "network_mode: host"
     # ports:
     #   - "8123:8123"
@@ -50,6 +54,8 @@ services:
     # This gives the container access to the host network for discovery etc.
     # TODO: test whether this can be disabled without breaking Bluetooth
     network_mode: host
+    labels:
+      - "com.centurylinklabs.watchtower.scope=home-assistant"
   mqtt:
     container_name: home_assistant_mqtt
     image: eclipse-mosquitto:latest
@@ -59,7 +65,31 @@ services:
       - ./mosquitto/config:/mosquitto/config:ro
       - ./mosquitto/data:/mosquitto/data
       - ./mosquitto/log:/mosquitto/log
-    restart: unless-stopped
     ports:
       - "1883:1883"
       - "8883:8883"
+    restart: always
+    labels:
+      - "com.centurylinklabs.watchtower.scope=home-assistant"
+  #nginx:
+    #container_name: home_assistant_nginx
+    #build: ./nginx
+    #volumes:
+      #- ./nginx/logs:/var/log/nginx
+      #- ./nginx/dhparam:/etc/nginx/dhparam
+      #- ./certbot/conf:/certbot:ro
+    #ports:
+      #- "80:80"
+      #- "443:443"
+  watchtower:
+    container_name: home_assistant_watchtower
+    hostname: watchtower
+    image: containrrr/watchtower:latest
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - /var/run/docker.sock:/var/run/docker.sock
+    # Run once a week on Sunday at 04:00
+    command: --cleanup --schedule "0 0 4 * * 0" --scope home-assistant
+    labels:
+      - "com.centurylinklabs.watchtower.scope=home-assistant"
+    restart: always
