@@ -2,7 +2,7 @@ version: "3"
 services:
   ddclient:
     image: lscr.io/linuxserver/ddclient:latest
-    container_name: ddclient
+    container_name: home_assistant_ddclient
     environment:
       - PUID=1000
       - PGID=1000
