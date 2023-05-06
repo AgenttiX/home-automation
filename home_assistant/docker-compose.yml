@@ -37,6 +37,8 @@ services:
       - ./config:/config
       # - ./ssl:/ssl
       - /etc/localtime:/etc/localtime:ro
+      # DBus for official Home Assistant Bluetooth
+      - /run/dbus:/run/dbus:ro
     restart: always
     # If there is no need for Bluetooth, this should be used instead of "network_mode: host"
     # ports:

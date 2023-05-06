@@ -44,6 +44,9 @@ ble_monitor:
   bt_auto_restart: True
   discovery: True
 
+# https://www.home-assistant.io/integrations/bluetooth
+bluetooth:
+
 # MQTT no longer supports file-based configuration
 # mqtt:
 #   broker: home_assistant_mqtt
