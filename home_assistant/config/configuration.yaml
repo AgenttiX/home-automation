@@ -64,9 +64,9 @@ sensor:
     locations:
       - Helsinki
 
-  - platform: ethermineinfo
-    miner_address: !secret miner_address
-    currency_name: EUR
+  # - platform: ethermineinfo
+  #   miner_address: !secret miner_address
+  #   currency_name: EUR
 
   - platform: nordpool
     VAT: True
