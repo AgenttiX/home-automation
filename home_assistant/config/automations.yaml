@@ -15,8 +15,8 @@
   condition: []
   action:
   - type: turn_on
-    device_id: d365d3480af61c90e2863e07ccf715bb
-    entity_id: switch.tasmota_70039f5e366b_switch_relay_2
+    device_id: cb4267657cb9ed3e341118c8152802df
+    entity_id: switch.tasmota_4
     domain: switch
   mode: single
 - id: '1670100954998'
@@ -28,7 +28,7 @@
   condition: []
   action:
   - type: turn_off
-    device_id: d365d3480af61c90e2863e07ccf715bb
-    entity_id: switch.tasmota_70039f5e366b_switch_relay_2
+    device_id: cb4267657cb9ed3e341118c8152802df
+    entity_id: switch.tasmota_4
     domain: switch
   mode: single
