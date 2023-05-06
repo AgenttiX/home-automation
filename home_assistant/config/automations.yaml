@@ -6,3 +6,29 @@
     input:
       tasmota_device: b48211371680355362913c510caf24cf
       topic: tasmota_D06ADD
+- id: '1670100879589'
+  alias: Turn on Christmas lights
+  description: ''
+  trigger:
+  - platform: time
+    at: '20:00:00'
+  condition: []
+  action:
+  - type: turn_on
+    device_id: d365d3480af61c90e2863e07ccf715bb
+    entity_id: switch.tasmota_70039f5e366b_switch_relay_2
+    domain: switch
+  mode: single
+- id: '1670100954998'
+  alias: Turn off Christmas lights
+  description: ''
+  trigger:
+  - platform: time
+    at: '23:00:00'
+  condition: []
+  action:
+  - type: turn_off
+    device_id: d365d3480af61c90e2863e07ccf715bb
+    entity_id: switch.tasmota_70039f5e366b_switch_relay_2
+    domain: switch
+  mode: single
