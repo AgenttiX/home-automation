@@ -67,9 +67,16 @@ services:
       - ./mosquitto/config:/mosquitto/config:ro
       - ./mosquitto/data:/mosquitto/data
       - ./mosquitto/log:/mosquitto/log
+      - /etc/letsencrypt/live:/etc/letsencrypt/live:ro
+      # Required for the symlinks in the live folder to work
+      - /etc/letsencrypt/archive:/etc/letsencrypt/archive:ro
     ports:
       - "1883:1883"
       - "8883:8883"
+    environment:
+      - CERT_NAME=agx.fi
+    entrypoint: "/mosquitto/config/docker-entrypoint.sh"
+    command: ["/usr/sbin/mosquitto", "-c", "/mosquitto/config/mosquitto.conf"]
     restart: always
     labels:
       - "com.centurylinklabs.watchtower.scope=home-assistant"
