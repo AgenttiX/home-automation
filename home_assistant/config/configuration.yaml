@@ -67,10 +67,10 @@ nordpool:
 prometheus:
 
 sensor:
-  - platform: waqi
-    token: !secret aqicn_api_token
-    locations:
-      - Helsinki
+  # - platform: waqi
+  #   token: !secret aqicn_api_token
+  #   locations:
+  #     - Helsinki
 
   # - platform: ethermineinfo
   #   miner_address: !secret miner_address
