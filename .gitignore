@@ -4,7 +4,9 @@
 *.log
 *.log.*
 .idea
+home_assistant/config/.ha_run.lock
 home_assistant/config/.storage
+home_assistant/config/backups
 home_assistant/config/www
 home_assistant/config/custom_components
 home_assistant/ddclient
