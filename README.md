@@ -1,6 +1,7 @@
 # Home automation
 Work in progress
 
+
 ## Software
 - [Home Assistant](https://www.home-assistant.io/)
   - The central open-source hub for home automation
@@ -13,6 +14,8 @@ Work in progress
   - Prefer devices with [ESP32](https://en.wikipedia.org/wiki/ESP32) over other chips,
     including the second-best option [ESP8266](https://en.wikipedia.org/wiki/ESP8266),
     as ESP32 has pre-built TLS support in Tasmota. This improves security significantly.
+- [Thingino](https://thingino.com/)
+  - Open-source firmware for security cameras with an Ingenic SoC
 - [Tuya-Convert](https://github.com/ct-Open-Source/tuya-convert)
   - OTA jailbreak for ESP8266-based devices with old stock firmware
 - [OpenBeken](https://github.com/openshwprojects/OpenBK7231T_App)
@@ -20,6 +23,7 @@ Work in progress
   - Not as feature-rich as Tasmota, but rapidly improving.
 - [Tuya Cloudcutter](https://github.com/tuya-cloudcutter/tuya-cloudcutter)
   - OTA jailbreak for Tuya-based devices
+
 
 ## Devices
 
@@ -95,6 +99,7 @@ Zexmte
   - [Requires additional firmware for Linux](https://linuxreviews.org/Realtek_RTL8761B)
     - On Ubuntu the firmware and config should be copied to `/lib/firmware/rtl_bt` with the file extension `.bin`.
 
+
 ### Lighting
 Philips Hue
 - Starter kit, white and colour ambiance, E27
@@ -106,6 +111,7 @@ Philips Hue
   - [Geizhals](https://geizhals.eu/philips-hue-white-and-colour-ambiance-gu10-5-7w-629250-00-a2116456.html)
 - E14 white and colour ambiance
   - [Geizhals](https://geizhals.eu/philips-hue-white-and-colour-ambiance-led-bulb-e14-6-5w-929002294202-a2448894.html)
+
 
 ### Socket
 Only buy sockets with 16 A current rating and energy monitoring!
@@ -160,6 +166,7 @@ Gosund SP211
 - Energy monitoring (total only, not per socket)
 - 15 A
 
+
 ### Power strip
 Nous A5T
 - [Amazon](https://www.amazon.de/-/en/gp/product/B0054PSH9C/)
@@ -178,12 +185,27 @@ Power strip box
 - With "wooden" cover: [AliExpress](https://www.aliexpress.com/item/4001237800573.html)
 - Plastic: [Verkkokauppa.com](https://www.verkkokauppa.com/fi/catalog/4402d/Kaapelihallinta/products?query=kaapelikotelo)
 
+
+### Security cameras
+Wuuk Y0510
+- [Amazon](https://www.amazon.de/dp/B0BC8DRX9D)
+- [Thingino](https://github.com/themactep/thingino-firmware/wiki/Camera%3A-Wuuk-Y0510)
+  - Firmware can be flashed from an SD card in a few minutes,
+    and the device can be restored to stock firmware later.
+- 4 MP (2560x1440)
+- Pan & tilt
+- Wi-Fi & SD card slot
+- 2-way audio
+- Based on the Ingenic T31X SoC
+
+
 ### Kettle
 ProfiCook PC-WKS 1167G 1.5L
 - [Amazon](https://www.amazon.de/gp/product/B07PQPZ8HH/)
 - [Tasmota](https://templates.blakadder.com/proficook_PC-WKS_1167.html)
   - Flashable over serial
   - Requires custom configuration, but instructions are available on the template page.
+
 
 ### Surge protection
 APC Surge Protector PME1WU2B-GR
@@ -198,6 +220,7 @@ Hama Surge Protection Adaptor
 - [Amazon](https://www.amazon.de/gp/product/B01JCKRHOK/)
 - 16 A / 3500 W
 - Small, does not obstruct adjacent sockets
+
 
 ### Temperature and humidity sensor
 Xiaomi LYWSD03MMC
@@ -218,6 +241,7 @@ Xiaomi MHO-C303
 - [Supported](https://custom-components.github.io/ble_monitor/by_brand#xiaomi)
   by the [Passive BLE Monitor integration](https://github.com/custom-components/ble_monitor) for Home Assistant
 
+
 ### Plant sensor
 MiFlora HHCCJCY01
 - [AliExpress](https://www.aliexpress.com/item/33017406335.html)
@@ -226,6 +250,7 @@ MiFlora HHCCJCY01
   app has severe login issues
 - [Supported](https://custom-components.github.io/ble_monitor/by_brand#miflora)
   by the [Passive BLE Monitor integration](https://github.com/custom-components/ble_monitor) for Home Assistant
+
 
 ### Smoke alarm
 Tuya YG400A
@@ -236,13 +261,16 @@ Tuya YG400A
   is based on BK7231N and should therefore be compatible with OpenBeken.
   However, as of 2022, there is no configuration template.
 
+
 ### Thermometer
 Withings Thermo
 - Controlled with the Withings Thermo Android app
 
+
 ### Scale
 Withings ASDFASDF
 - Controlled with the Withings Health Mate Android app
+
 
 ### Toothbrush
 Oral-B Genius X
