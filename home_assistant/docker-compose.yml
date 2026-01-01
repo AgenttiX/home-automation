@@ -1,3 +1,6 @@
+# Before starting this configuration, set the correct timezone with:
+# sudo timedatectl set-timezone Europe/Helsinki
+
 version: "3"
 services:
   # ddclient:
