@@ -1,0 +1,13 @@
+[Unit]
+Description=Bind USB device to usbipd
+After=network-online.target usbipd.service
+Wants=network-online.target usbipd.service
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+ExecStart=/usr/sbin/usbip bind --busid %i
+ExecStop=/usr/sbin/usbip unbind --busid %i
+
+[Install]
+WantedBy=multi-user.target
