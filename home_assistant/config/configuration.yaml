@@ -102,7 +102,7 @@ template:
           {% endfor %}
           {{ ns.states | sum | round(2) }}
       - name: "Total Power"
-        device_class: "energy"
+        device_class: "power"
         unit_of_measurement: "W"
         state: >
           {% set ns = namespace(states=[]) %}
