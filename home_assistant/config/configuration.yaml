@@ -62,8 +62,6 @@ http:
   trusted_proxies:
     - 127.0.0.1
 
-nordpool:
-
 prometheus:
 
 sensor:
@@ -76,15 +74,15 @@ sensor:
   #   miner_address: !secret miner_address
   #   currency_name: EUR
 
-  - platform: nordpool
-    VAT: True
-    currency: "EUR"
-    low_price_cutoff: 0.5
-    region: "FI"
-    precision: 3
-    price_type: kWh
-    # (transfer fee + tax)/(VAT * cents_to_eur)
-    additional_costs: "{{(4.07+2.79372)/(1.24*100)|float}}"
+#   - platform: nordpool
+#     VAT: True
+#     currency: "EUR"
+#     low_price_cutoff: 0.5
+#     region: "FI"
+#     precision: 3
+#     price_type: kWh
+#     # (transfer fee + tax)/(VAT * cents_to_eur)
+#     additional_costs: "{{(4.07+2.79372)/(1.24*100)|float}}"
 
 template:
 #  - trigger:
