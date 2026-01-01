@@ -1,0 +1,18 @@
+# https://unix.stackexchange.com/a/638097/
+
+[Unit]
+Description=usbip host daemon
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+Restart=always
+ExecStartPre=/usr/sbin/modprobe usbip-core
+ExecStartPre=/usr/sbin/modprobe usbip-host
+ExecStart=/usr/sbin/usbipd
+ExecStopPost=/usr/sbin/rmmod usbip-host
+ExecStopPost=/usr/sbin/rmmod usbip-core
+
+[Install]
+WantedBy=multi-user.target

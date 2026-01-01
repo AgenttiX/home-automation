@@ -115,13 +115,15 @@ Philips Hue
 
 ### Socket
 Only buy sockets with 16 A current rating and energy monitoring!
+For the calibration you need one device that has a resistive load (e.g. a ligth bulb),
+and a power monitor that can preferably measure the power factor.
 
 Athom 16A EU V2
 - [AliExpress](https://www.aliexpress.com/item/4001230982267.html)
 - [Tasmota](https://templates.blakadder.com/athom_PG01V2-EU16A-TAS.html) preinstalled
 - Energy monitoring is provided by the integrated
   [HLW8032](https://www.electrodragon.com/product/energy-meter-hlw8032-breakout-board/)
-  power monitoring chip. No calibration is necessary.
+  power monitoring chip. Calibration is not necessary, but it can improve the accuracy.
 - 16 A / 3680 W
 
 CozyLife 16A

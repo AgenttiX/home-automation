@@ -1,3 +1,5 @@
+# Before starting this configuration, set the correct timezone with:
+# sudo timedatectl set-timezone Europe/Helsinki
 services:
   # ddclient:
   #   image: lscr.io/linuxserver/ddclient:latest
