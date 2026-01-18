@@ -182,15 +182,16 @@ Power strip box
 
 ### Security cameras
 Wuuk Y0510
-- [Amazon](https://www.amazon.de/dp/B0BC8DRX9D)
-- [Thingino](https://github.com/themactep/thingino-firmware/wiki/Camera%3A-Wuuk-Y0510)
-  - Firmware can be flashed from an SD card in a few minutes,
-    and the device can be restored to stock firmware later.
-- 4 MP (2560x1440)
-- Pan & tilt
-- Wi-Fi & SD card slot
-- 2-way audio
-- Based on the Ingenic T31X SoC
+- Please see the
+  [physical security page](https://agx.fi/it/physical-security)
+  on my website.
+
+
+### Motion sensors
+Philips Hue indoor motion sensor
+- Please see the
+  [physical security page](https://agx.fi/it/physical-security)
+  on my website.
 
 
 ### Kettle
