@@ -87,17 +87,9 @@ Egobas Smart Monitor 15.6"
 
 
 ### Bluetooth adapter
-Zexmte
-- [Amazon](https://www.amazon.de/-/en/Bluetooth-anti-interference-transmission-headphones-compatible/dp/B08SC9M9K3/)
-- [AliExpress](https://www.aliexpress.com/item/1005002931530115.html)
-- Bluetooth 5.0
-  - Bluetooth >= 4.0 is required for Bluetooth LE (BLE)
-- Class 1 radio (100 m range)
-- Realtek RTL8761B
-  - Requires Linux kernel >= 5.8, which can be installed on Ubuntu 20.04 with
-    `sudo apt-get install linux-generic-hwe-20.04`
-  - [Requires additional firmware for Linux](https://linuxreviews.org/Realtek_RTL8761B)
-    - On Ubuntu the firmware and config should be copied to `/lib/firmware/rtl_bt` with the file extension `.bin`.
+Please see the
+[Bluetooth page](https://agx.fi/it/bluetooth)
+on my website.
 
 
 ### Lighting
