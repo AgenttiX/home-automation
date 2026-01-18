@@ -13,16 +13,41 @@ Work in progress
   - When buying IoT devices, prefer ones that [have support for Tasmota](https://templates.blakadder.com/) or some other custom firmware. This ensures that you won't be dependent on the software updates by the manufacturer.
   - Prefer devices with [ESP32](https://en.wikipedia.org/wiki/ESP32) over other chips,
     including the second-best option [ESP8266](https://en.wikipedia.org/wiki/ESP8266),
-    as ESP32 has pre-built TLS support in Tasmota. This improves security significantly.
+    since ESP32 has:
+    - WPA3
+      - ESP8266 does not support WPA3, but it does support networks with:
+        - Hybrid WPA2/WPA3
+        - 802.11w Management Frame protection set as optional
+        - KRACK countermeasures
+    - TLS in the pre-built Tasmota binaries
+    - IPv6 in the pre-built Tasmota binaries
 - [Thingino](https://thingino.com/)
   - Open-source firmware for security cameras with an Ingenic SoC
 - [Tuya-Convert](https://github.com/ct-Open-Source/tuya-convert)
-  - OTA jailbreak for ESP8266-based devices with old stock firmware
+  - OTA jailbreak for ESP826c6-based devices with old stock firmware
 - [OpenBeken](https://github.com/openshwprojects/OpenBK7231T_App)
+  - [Supported devices](https://openbekeniot.github.io/webapp/devicesList.html)
   - Tasmota-like firmware for devices based on Tuya modules
   - Not as feature-rich as Tasmota, but rapidly improving.
 - [Tuya Cloudcutter](https://github.com/tuya-cloudcutter/tuya-cloudcutter)
   - OTA jailbreak for Tuya-based devices
+
+
+### Tasmota configuration
+- Reset
+  - Full reset: press the button for 40 s
+  - Wi-Fi reset: [press the button six times](https://tasmota.github.io/docs/FAQ/#i-entered-wrong-wi-fi-information)
+- Other &rarr; template &rarr; copy-paste from Tasmota website & activate
+- Wi-Fi
+  - It's a good idea to also configure a secondary network name in the case the primary one has problems.
+- Power monitoring calibration
+  - For new calibration, please see the
+    [Tasmota instructions](https://tasmota.github.io/docs/Power-Monitoring-Calibration/)
+  - To load existing calibration, use the `PowerCal`, `VoltageCal` and `CurrentCal` commands.
+- MQTT: host, user & password
+  - This should be configured after the power monitoring calibration
+    so that incorrect data is not saved by the MQTT server.
+- Optional: reboot with button or with `Restart 1`
 
 
 ## Devices
@@ -106,13 +131,15 @@ Philips Hue
 
 
 ### Socket
-Only buy sockets with 16 A current rating and energy monitoring!
+I recommend to buy only sockets with 16 A current rating and energy monitoring,
+as these features are highly useful and don't increase the price significantly,
 For the calibration you need one device that has a resistive load (e.g. a ligth bulb),
 and a power monitor that can preferably measure the power factor.
 
 Athom 16A EU V2
 - [AliExpress](https://www.aliexpress.com/item/4001230982267.html)
 - [Tasmota](https://templates.blakadder.com/athom_PG01V2-EU16A-TAS.html) preinstalled
+  - Template: `{"NAME":"Athom Plug V2","GPIO":[0,0,0,3104,0,32,0,0,224,576,0,0,0,0],"FLAG":0,"BASE":18}`
 - Energy monitoring is provided by the integrated
   [HLW8032](https://www.electrodragon.com/product/energy-meter-hlw8032-breakout-board/)
   power monitoring chip. Calibration is not necessary, but it can improve the accuracy.
@@ -121,6 +148,7 @@ Athom 16A EU V2
 CozyLife 16A
 - [AliExpress](https://www.aliexpress.com/item/1005004541903825.html)
 - [Tasmota](https://templates.blakadder.com/cozylife_homekit_plug.html)
+  - Template: `{"NAME":"CozyLife 16A","GPIO":[0,32,0,0,0,0,0,0,0,0,0,0,0,0,0,2720,0,0,2656,576,0,224,2624,0,0,0,0,0,0,0,0,0,0,0,0,0],"FLAG":0,"BASE":1}`
 - Looks promising, but I haven't tested these yet
 - Energy monitoring
 - Based on ESP32-SOLO1
@@ -130,14 +158,17 @@ CozyLife 16A
 Nous A1T
 - Same hardware as Nous A1 used to have,
   but with [Tasmota](https://templates.blakadder.com/nous_A1T.html) preinstalled
+  - Template: `{"NAME":"NOUS A1T","GPIO":[32,0,0,0,2720,2656,0,0,2624,320,224,0,0,0],"FLAG":0,"BASE":49}`
 - [Amazon](https://www.amazon.de/-/en/gp/product/B0054PSIPA/)
 - Energy monitoring
 - 16 A / 3450 W
 
 Nous A1
 - [Amazon](https://www.amazon.de/gp/product/B0054PSES6/)
-- No longer compatible with [Tasmota](https://templates.blakadder.com/nous_A1.html)
-  - Used to be flashable with Tuya-Convert
+- [Tasmota](https://templates.blakadder.com/nous_A1.html)
+  - Template: `{"NAME":"NOUS A1","GPIO":[320,0,576,0,2656,2720,0,0,2624,32,0,224,0,0],"FLAG":0,"BASE":45}`
+  - Now comes with a Wi-Fi module that is not compatible with Tasmota.
+  - Used to be flashable with Tuya-Convert.
 - Energy monitoring
 - 16 A / 3450 W
 
@@ -146,6 +177,7 @@ Gosund SP112
 - Tasmota
   - [Old version](https://templates.blakadder.com/gosund_SP112.html)
   - [New version](https://templates.blakadder.com/gosund_SP112_v3_4.html)
+  - Template: `{"NAME":"SP112new","GPIO":[57,0,56,0,132,134,0,0,131,30,21,0,0],"FLAG":4,"BASE":18}`
   - Now comes with a Wi-Fi module that is not compatible with Tasmota.
 - 2 USB ports with a separate relay (but no physical button)
 - 16 A / 3680 W
@@ -165,11 +197,13 @@ Gosund SP211
 Nous A5T
 - [Amazon](https://www.amazon.de/-/en/gp/product/B0054PSH9C/)
 - [Tasmota](https://templates.blakadder.com/nous_A5T.html) preinstalled
+  - Template: `{"NAME":"NOUS A5T","GPIO":[0,3072,544,3104,0,259,0,0,225,226,224,0,35,4704],"FLAG":1,"BASE":18}`
 - Same hardware as Gosund P1
 
 Gosund P1
 - Amazon (no longer available)
 - [Tasmota](https://templates.blakadder.com/gosund_P1.html)
+  - Template: `{"NAME":"Gosund_P1","GPIO":[0,3072,544,3104,0,259,0,0,225,226,224,0,35,4704],"FLAG":0,"BASE":18}`
   - Required flashing over serial
   - Now probably comes with a Wi-Fi module that is not compatible with Tasmota.
 - Buttons are quirky with default settings, and pressing one button may affect another socket.
@@ -250,11 +284,13 @@ MiFlora HHCCJCY01
 ### Smoke alarm
 Tuya YG400A
 - [AliExpress](https://www.aliexpress.com/item/4000818367545.html)
-- [Tasmota](https://templates.blakadder.com/YG400A.html)
-- New version comes with a different chip (CB3S instead of TYWE3S) that is not compatible with Tasmota.
-- The [CB3S](https://developer.tuya.com/en/docs/iot/cb3s?id=Kai94mec0s076)
-  is based on BK7231N and should therefore be compatible with OpenBeken.
-  However, as of 2022, there is no configuration template.
+- Old version: [Tasmota](https://templates.blakadder.com/YG400A.html)
+- New version
+  - With [CB3S](https://developer.tuya.com/en/docs/iot/cb3s?id=Kai94mec0s076), which is based on BK7231N
+  - Not compatible with Tasmota
+  - Compatible with [OpenBeken](https://openbekeniot.github.io/webapp/devices/Tuya_WiFi_Smoke_Detector.html)
+  - [Elektroda forum discussion](https://www.elektroda.com/rtvforum/topic3941698.html)
+  - I haven't been able to get these working yet
 
 
 ### Thermometer
